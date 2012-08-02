@@ -1,0 +1,9 @@
+README
+
+Jun Xie(xie@eecs.oregonstate.edu)
+
+Compile:
+javac -d ../bin/classes/ -classpath ../lib/Jama-1.0.2.jar LinearRegression.java
+
+Run:
+java -cp ../bin/classes/:../lib/Jama-1.0.2.jar LinearRegression
