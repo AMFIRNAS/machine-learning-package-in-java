@@ -17,8 +17,8 @@ public class LinearRegression {
 	
 	public LinearRegression() {
 		lambda = 1.0;
-		trainingFile = "regressiondata/regression-train.csv";
-		testingFile = "regressiondata/regression-test.csv";
+		trainingFile = "regressiondata/initial_noise";
+		testingFile = "regressiondata/one.csv";
 	}
 	
 	/**
@@ -162,6 +162,7 @@ public class LinearRegression {
 		Matrix predictTargets = new Matrix(row, 1);
 		for (int i = 0; i < row; i++) {
 			double value = multiply(data.getMatrix(i, i, 0, data.getColumnDimension() -1 ), weights);
+			//System.out.println(value);
 			predictTargets.set(i, 0, value);
 		}
 		return predictTargets;
@@ -213,7 +214,10 @@ public class LinearRegression {
 		    
 		    // Train the model.
 		    Matrix weights = lr.trainLinearRegressionModel(trainingData, trainingTargets, lr.lambda);
-
+		    for (int i = 0; i < weights.getRowDimension(); i++) {
+			System.out.println(weights.get(i, 0));
+		    }
+		    
 		    // Evaluate the model using training and testing data.
 		    double training_error = lr.evaluateLinearRegressionModel(trainingData, trainingTargets, weights);
 		    double testing_error = lr.evaluateLinearRegressionModel(testingData, testingTargets, weights);
